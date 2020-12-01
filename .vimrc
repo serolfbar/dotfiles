@@ -1,22 +1,30 @@
-
-" execute pathogen#infect()
-" Plugins
+" Plugins with Vim-Plug
 call plug#begin('~/.vim/plugged')
 Plug 'pechorin/any-jump.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'google/vim-codefmt'
 Plug 'tpope/vim-commentary'
 Plug 'airblade/vim-gitgutter'
 Plug 'google/vim-glaive'
 Plug 'google/vim-maktaba'
 Plug 'tpope/vim-sleuth'
-Plug 'ycm-core/YouCompleteMe'
-
+Plug 'voldikss/vim-floaterm'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'habamax/vim-godot'
+Plug 'wfxr/code-minimap'
+Plug 'wfxr/minimap.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'kingofctrl/vim.cpp'
+Plug 'stillwwater/vim-nebula'
+Plug 'othree/xml.vim'
+Plug 'elzr/vim-json'
+Plug 'chriskempson/base16-vim'
+Plug 'franbach/miramare'
+Plug 'itchyny/lightline.vim'
 call plug#end()
 
 set path+=**
@@ -30,13 +38,26 @@ set fillchars+=vert:\
 let &t_ut=''
 set tags=tags;/
 
-color jellybeans 
+if has('termguicolors')
+  set termguicolors
+endif
+if !has('gui_running')
+  set t_Co=256
+endif
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48:2;%lu;%lu;%lum"
 
-set cursorline
+colorscheme miramare 
+
+" set cursorline
 
 hi VertSplit ctermfg=Black ctermbg=DarkGray
 autocmd InsertEnter * set cul
 autocmd InsertLeave * set nocul
+
+" XML
+autocmd BufNewFile,BufRead *.xaml setf xml
+
 
 " Latex
 autocmd Filetype tex setl updatetime=1
@@ -81,9 +102,13 @@ map <C-n> :NERDTreeToggle<CR>
 nnoremap <C-p> :FZF<CR>
 nnoremap <C-i> :Buffers<CR>
 
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='deus'
+" lightline 
+set laststatus=2
+set noshowmode
+let g:lightline = {
+  \ 'colorscheme': 'jellybeans',
+\ }
+
 
 " Change between splits
 nnoremap <C-J> <C-W><C-J>
@@ -97,10 +122,16 @@ nnoremap <leader>j :AnyJump<CR>
 "You Complete Me
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-" Start fzf on pop modal
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+"===================================== Godot ==========================================
+let g:godot_executable="/home/alexander/Dev/sources/Godot_v3.2.1-stable_x11.64"
+func! GodotSettings() abort
+	setlocal tabstop=4
+	nnoremap <buffer> <F4> :GodotRunLast<CR>
+	nnoremap <buffer> <F5> :GodotRun<CR>
+	nnoremap <buffer> <F6> :GodotRunCurrent<CR>
+	nnoremap <buffer> <F7> :GodotRunFZF<CR>
+endfunc
+augroup godot | au!
+	au FileType gdscript call GodotSettings()
+augroup end
 
-"
-" Java formatter
-" Glaive codefmt plugin[mappings]
-" Glaive codefmt google_java_executable="java -jar /home/alexander/Dev/sources/google-java-format-1.8-all-deps.jar"
