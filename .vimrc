@@ -26,6 +26,10 @@ Plug 'fatih/vim-go' "Plugin for go support
 Plug 'evanleck/vim-svelte', {'branch': 'main'} "Support for Svelte
 Plug 'chrisbra/SudoEdit.vim' " Lets me edit readonly files
 Plug 'OmniSharp/omnisharp-vim' " Support for c sharp
+Plug 'Quramy/tsuquyomi' "Support for typescript
+Plug 'godlygeek/tabular' "Support for aligning stuff
+Plug 'plasticboy/vim-markdown' "Support for aligning stuff
+Plug 'lervag/vimtex' "Support for latex
 call plug#end()
 
 " ===================================== General =========================================
@@ -39,7 +43,6 @@ set ruler
 set fillchars+=vert:\  
 set t_ut=''
 set tags=tags;/
-
 
 " ===================================== Colors =========================================
 if !has('gui_running')
@@ -57,11 +60,11 @@ autocmd BufNewFile,BufRead *.xaml setf xml
 
 
 " ===================================== Latex =========================================
-autocmd Filetype tex setl updatetime=1
-let g:livepreview_cursorhold_recompile = 0
-let g:ycm_semantic_triggers = {
-	\ 'tex'  : ['{']
-\}
+" autocmd Filetype tex setl updatetime=1
+" let g:livepreview_cursorhold_recompile = 0
+" let g:ycm_semantic_triggers = {
+" 	\ 'tex'  : ['{']
+" \}
 
 " ===================================== Language Supports =========================================
 let g:python_highlight_all = 1
@@ -147,3 +150,9 @@ let g:fzf_preview_git_status_preview_command =
   \ "[[ $(git diff --cached -- {-1}) != \"\" ]] && git diff --cached --color=always -- {-1} | delta || " .
   \ "[[ $(git diff -- {-1}) != \"\" ]] && git diff --color=always -- {-1} | delta || " .
   \ g:fzf_preview_command
+
+"================================== VIMTEX =================================
+let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_compiler_latexmk = {
+   \ 'build_dir' : '/tmp/buildir',
+       \}
