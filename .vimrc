@@ -30,12 +30,17 @@ Plug 'Quramy/tsuquyomi' "Support for typescript
 Plug 'godlygeek/tabular' "Support for aligning stuff
 Plug 'plasticboy/vim-markdown' "Support for aligning stuff
 Plug 'lervag/vimtex' "Support for latex
+Plug 'tpope/vim-surround' 
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'junegunn/vim-easy-align' "Aligning stuff
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'sirver/UltiSnips'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 " ===================================== General =========================================
 set path+=**
 set rtp+=~/.fzf
-set pythonthreehome=/usr
 syntax on
 set t_Co=256
 filetype plugin indent on
@@ -43,6 +48,12 @@ set ruler
 set fillchars+=vert:\  
 set t_ut=''
 set tags=tags;/
+autocmd FileType vimwiki set ft=markdown
+set tabstop=3
+set shiftwidth=3
+set expandtab
+let s:using_snippets = 1
+
 
 " ===================================== Colors =========================================
 if !has('gui_running')
@@ -51,12 +62,13 @@ endif
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48:2;%lu;%lu;%lum"
 
-colorscheme zenburn 
+colorscheme darth 
 
 
 
 " ===================================== XML =========================================
 autocmd BufNewFile,BufRead *.xaml setf xml
+autocmd BufNewFile,BufRead *.axaml setf xml
 
 
 " ===================================== Latex =========================================
@@ -120,14 +132,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" ====================================== Save readonly file  ===========================
-cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
 "===================================== Launch AnyJump ==========================================
 nnoremap <leader>j :AnyJump<CR> 
-
-"===================================== You Complete Me ==========================================
-let g:ycm_autoclose_preview_window_after_insertion = 1
 
 "===================================== Godot ==========================================
 let g:godot_executable="/home/alexander/Dev/sources/Godot_v3.2.1-stable_x11.64"
@@ -143,16 +149,47 @@ augroup godot | au!
 augroup end
 
 
-"================================= GIT PREVIEW =================================================
-let g:fzf_preview_command = 'bat --color=always --plain {-1}'
-let g:fzf_preview_default_fzf_options = { '--reverse': v:true, '--preview-window': 'wrap:70%' }
-let g:fzf_preview_git_status_preview_command =
-  \ "[[ $(git diff --cached -- {-1}) != \"\" ]] && git diff --cached --color=always -- {-1} | delta || " .
-  \ "[[ $(git diff -- {-1}) != \"\" ]] && git diff --color=always -- {-1} | delta || " .
-  \ g:fzf_preview_command
+" ================================= Markdown preview  ============================
 
-"================================== VIMTEX =================================
-let g:vimtex_view_general_viewer = 'zathura'
-let g:vimtex_compiler_latexmk = {
-   \ 'build_dir' : '/tmp/buildir',
-       \}
+augroup CursorLine
+  set cursorline
+  hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+augroup END
+
+
+" ================================= OmniSharp ================================
+" OmniSharp: {{{
+let g:OmniSharp_popup_position = 'peek'
+if has('nvim')
+  let g:OmniSharp_popup_options = {
+  \ 'winhl': 'Normal:NormalFloat'
+  \}
+else
+  let g:OmniSharp_popup_options = {
+  \ 'highlight': 'Normal',
+  \ 'padding': [0, 0, 0, 0],
+  \ 'border': [1]
+  \}
+endif
+let g:OmniSharp_popup_mappings = {
+\ 'sigNext': '<C-n>',
+\ 'sigPrev': '<C-p>',
+\ 'pageDown': ['<C-f>', '<PageDown>'],
+\ 'pageUp': ['<C-b>', '<PageUp>']
+\}
+
+nnoremap <leader>0 :OmniSharpGetCodeActions<CR>
+  
+
+
+if s:using_snippets
+  let g:OmniSharp_want_snippet = 1
+endif
+
+let g:OmniSharp_highlight_groups = {
+\ 'ExcludedCode': 'NonText'
+\}
+" }}}
+"
+" Remaps for c# files only
+autocmd FileType cs nnoremap <leader>gf :OmniSharpGotoDefinition<CR>
