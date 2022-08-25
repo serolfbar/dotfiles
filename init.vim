@@ -9,11 +9,11 @@ Plug 'pangloss/vim-javascript'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
 Plug 'cocopon/iceberg.vim'
 Plug 'rakr/vim-one'
-Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
-Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'lambdalisue/fern.vim'
 call plug#end()
 
 
@@ -53,8 +53,8 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 let g:coq_settings = { 'auto_start': 'shut-up' }
 
 
-" NERDTREE/CHADTREE
-nnoremap <Leader>v <cmd>CHADopen<CR>
+" NERDTREE/CHADTREE/Fern-vim
+nnoremap <Leader>v <cmd>Fern . -drawer -toggle<CR>
 
 " Change between splits
 " nnoremap <C-J> <C-W><C-J>
@@ -69,7 +69,7 @@ nnoremap <C-F> :Rg<CR>
 
 "LightLine
 let g:lightline = {
-      \ 'colorscheme': 'iceberg',
+      \ 'colorscheme': 'catppuccin_mocha',
       \ }
 
 
