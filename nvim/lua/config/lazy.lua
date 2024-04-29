@@ -23,15 +23,19 @@ require("lazy").setup(
 	      "MunifTanjim/nui.nvim",
 	    }
 	},
-	{
-            'nvim-telescope/telescope.nvim',
-	    tag = '0.1.5',
-	    dependencies = { 'nvim-lua/plenary.nvim' }
-	},
+	-- {
+      -- 'nvim-telescope/telescope.nvim',
+	--     tag = '0.1.5',
+	--     dependencies = { 'nvim-lua/plenary.nvim' }
+	-- },
 	{
 	   'nvim-treesitter/nvim-treesitter', 
 	   build = ':TSUpdate'
 	},
+  {
+    'junegunn/fzf'
+  },
+  {'junegunn/fzf.vim'},
 	{"Darazaki/indent-o-matic"}, -- Indent code based on other files or present code
 	{"tpope/vim-commentary"}, -- Better commenting capabilities
 	{"lewis6991/gitsigns.nvim"}, -- Display version changes changes
@@ -52,4 +56,14 @@ require("lazy").setup(
     lazy = false,
     priority = 1000,
   },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify",
+      }
+  },
+  {"epwalsh/obsidian.nvim"},
+  {'projekt0n/github-nvim-theme'}
 }, opts)

@@ -1,7 +1,7 @@
 local lsp_zero = require('lsp-zero')
 
-vim.keymap.set("n", "<M-CR>", '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
-vim.keymap.set("n", "<M-[>", '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>o", '<cmd>lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>d", '<cmd>lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
 
 lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
