@@ -8,13 +8,18 @@ lsp_zero.on_attach(function(client, bufnr)
   -- to learn the available actions
   lsp_zero.default_keymaps({buffer = bufnr})
 end)
-
 -- Mason will handle all lsp servers
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {},
+  ensure_installed = {
+  },
   handlers = {
     lsp_zero.default_setup,
+    volar = function()
+      require('lspconfig').volar.setup{
+        filetypes = {'typescript', 'javascript', 'vue'}
+      }
+    end
   },
 })
 

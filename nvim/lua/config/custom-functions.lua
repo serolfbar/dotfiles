@@ -5,3 +5,4 @@ function VerticalSplitWithTerminal()
   vim.cmd('wincmd l')
   vim.cmd('term')
 end
+
