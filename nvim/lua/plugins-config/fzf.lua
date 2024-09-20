@@ -12,3 +12,4 @@ vim.keymap.set("n", "<Space>fg", ":Rg<CR>", {
 	noremap = true,
 	silent = true
 })
+

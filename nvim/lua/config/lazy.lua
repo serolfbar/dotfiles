@@ -109,6 +109,6 @@ require("lazy").setup(
           desc = "Quickfix List (Trouble)",
         },
       },
-    }
-
+    },
+    { 'elkowar/yuck.vim' }
   }, opts)

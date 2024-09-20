@@ -8,6 +8,16 @@ vim.keymap.set("n", "<leader>zf", ":LspZeroFormat<CR>", {
 	silent = true
 })
 
+vim.keymap.set('n', '<Space>fr', function() vim.lsp.buf.references() end, {
+	noremap = true,
+	silent = true
+})
+
+vim.keymap.set('n', '<Space>vr', function() vim.lsp.buf.rename() end, {
+	noremap = true,
+	silent = true
+})
+
 
 -- local telesc = require("telescope.builtin")
 

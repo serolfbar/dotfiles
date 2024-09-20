@@ -1,8 +1,8 @@
-local lspsaga = require("lspsaga")
+-- local lspsaga = require("lspsaga")
 
 -- vim.keymap.set('n', '<Leader>fr', "lspsaga")
 
-lspsaga.setup({})
+-- lspsaga.setup({})
 
 
 

@@ -8,10 +8,7 @@ require("plugins-config.zero")
 require("plugins-config.indent")
 require("plugins-config.treesitter")
 require("plugins-config.lualine")
--- require("plugins-config.noice")
 require("plugins-config.obsidian")
--- require("plugins-config.ufo")
--- require("lspsaga")
 
 
 function Color(color)
