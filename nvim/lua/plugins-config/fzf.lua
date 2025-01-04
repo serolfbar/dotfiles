@@ -1,4 +1,4 @@
-vim.keymap.set("n", "<Space>ff", ":FZF<CR>", {
+vim.keymap.set("n", "<Space>ff", ":Files<CR>", {
 	noremap = true,
 	silent = true
 })

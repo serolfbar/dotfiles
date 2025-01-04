@@ -9,10 +9,14 @@ require("plugins-config.indent")
 require("plugins-config.treesitter")
 require("plugins-config.lualine")
 require("plugins-config.obsidian")
+require("plugins-config.gitsigns")
+require("plugins-config.cyberdream")
+require("plugins-config.harpoon")
+require("plugins-config.telescope")
 
 
 function Color(color)
-	color = color or "bamboo"
+	color = color or "everforest"
 	vim.cmd.colorscheme(color)
 end
 

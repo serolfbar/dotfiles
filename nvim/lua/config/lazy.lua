@@ -32,7 +32,7 @@ require("lazy").setup(
     },
     { 'junegunn/fzf.vim' },
     { "Darazaki/indent-o-matic" }, -- Indent code based on other files or present code
-    { "tpope/vim-commentary" }, -- Better commenting capabilities
+    { "tpope/vim-commentary" },    -- Better commenting capabilities
     { "lewis6991/gitsigns.nvim" }, -- Display version changes changes
     { "nvim-lualine/lualine.nvim" },
     ---------------------Completion and LSP management
@@ -71,7 +71,7 @@ require("lazy").setup(
         require('bamboo').load()
       end,
     },
-    { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async'},
+    { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
     { 'nvimdev/lspsaga.nvim' },
     {
       "folke/trouble.nvim",
@@ -108,7 +108,33 @@ require("lazy").setup(
           "<cmd>Trouble qflist toggle<cr>",
           desc = "Quickfix List (Trouble)",
         },
+        {
+          "<leader>xr",
+          "<cmd>Trouble lsp_references toggle<cr>",
+          desc = "References (Trouble)",
+        }
       },
     },
-    { 'elkowar/yuck.vim' }
+    { 'elkowar/yuck.vim' },
+    {
+      'scottmckendry/cyberdream.nvim',
+      lazy = false,
+      priority = 1000,
+    },
+    {
+      'rose-pine/neovim',
+      name = "rose-pine"
+    },
+
+    {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    { "EdenEast/nightfox.nvim" },
+    {
+      'nvim-telescope/telescope.nvim',
+      tag = '0.1.8',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+    }
   }, opts)

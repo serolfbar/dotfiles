@@ -19,6 +19,10 @@ vim.keymap.set('n', '<Space>vr', function() vim.lsp.buf.rename() end, {
 })
 
 
+vim.keymap.set('n', '<Leader>bd', ":bd<CR>", {
+	noremap = true,
+	silent = true
+})
 -- local telesc = require("telescope.builtin")
 
 
