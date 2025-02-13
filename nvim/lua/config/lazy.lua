@@ -35,44 +35,19 @@ require("lazy").setup(
     { "tpope/vim-commentary" },    -- Better commenting capabilities
     { "lewis6991/gitsigns.nvim" }, -- Display version changes changes
     { "nvim-lualine/lualine.nvim" },
-    ---------------------Completion and LSP management
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
-    { "VonHeikemen/lsp-zero.nvim",        branch = 'v3.x' },
-    { "neovim/nvim-lspconfig" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/nvim-cmp" },
-    { "L3MON4D3/LuaSnip" },
-    -----------------------------------Colorschemes
-    { "sainnhe/everforest" },
     {
-      "zootedb0t/citruszest.nvim",
-      lazy = false,
-      priority = 1000,
-    },
-    {
-      "folke/noice.nvim",
-      event = "VeryLazy",
+      "ThePrimeagen/refactoring.nvim",
       dependencies = {
-        "MunifTanjim/nui.nvim",
-        "rcarriga/nvim-notify",
-      }
-    },
-    { "epwalsh/obsidian.nvim" },
-    { 'projekt0n/github-nvim-theme' },
-    {
-      'ribru17/bamboo.nvim',
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+      },
       lazy = false,
-      priority = 1000,
       config = function()
-        require('bamboo').setup {
-          -- optional configuration here
-        }
-        require('bamboo').load()
+        require("refactoring").setup()
       end,
     },
-    { 'kevinhwang91/nvim-ufo', dependencies = 'kevinhwang91/promise-async' },
-    { 'nvimdev/lspsaga.nvim' },
+    { "stevearc/aerial.nvim" },
+    {'lambdalisue/vim-suda' },
     {
       "folke/trouble.nvim",
       opts = {}, -- for default options, refer to the configuration section for custom setup.
@@ -115,26 +90,46 @@ require("lazy").setup(
         }
       },
     },
-    { 'elkowar/yuck.vim' },
-    {
-      'scottmckendry/cyberdream.nvim',
-      lazy = false,
-      priority = 1000,
-    },
-    {
-      'rose-pine/neovim',
-      name = "rose-pine"
-    },
-
     {
       "ThePrimeagen/harpoon",
       branch = "harpoon2",
       dependencies = { "nvim-lua/plenary.nvim" }
     },
-    { "EdenEast/nightfox.nvim" },
     {
       'nvim-telescope/telescope.nvim',
       tag = '0.1.8',
       dependencies = { 'nvim-lua/plenary.nvim' }
-    }
+    },
+    { "karb94/neoscroll.nvim"},
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+      keys = {
+        {
+          "<leader>?",
+          function()
+            require("which-key").show({ global = false })
+          end,
+          desc = "Buffer Local Keymaps (which-key)",
+        },
+      },
+    },
+    ---------------------Completion and LSP management
+    { "williamboman/mason.nvim" },
+    { "williamboman/mason-lspconfig.nvim" },
+    { "neovim/nvim-lspconfig" },
+    { "hrsh7th/cmp-nvim-lsp" },
+    { "hrsh7th/nvim-cmp" },
+    { "L3MON4D3/LuaSnip" },
+    { 'nvimdev/lspsaga.nvim' },
+    ----------------------Language specific
+    { 'ziglang/zig.vim' },
+    { 'epwalsh/obsidian.nvim' },
+    ------------------------------Colorschemes
+    { 'EdenEast/nightfox.nvim'}
   }, opts)
