@@ -2,11 +2,6 @@
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>y", "\"+y")
 
-vim.keymap.set('n', '<Space>vr', function() vim.lsp.buf.rename() end, {
-	noremap = true,
-	silent = true
-})
-
 -- NEO TREE
 vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>")
 

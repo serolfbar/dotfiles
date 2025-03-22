@@ -5,7 +5,7 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 
-vim.cmd.colorscheme("kanagawa-wave")
+vim.cmd.colorscheme("solarized")
 
 -- DISABLING THIS FOR LSP_LINES to work
 vim.diagnostic.config { virtual_text = false }

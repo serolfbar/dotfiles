@@ -9,15 +9,7 @@ return {
       lua_ls = {},
       rust_analyzer = {},
       clangd = {},
-      ts_ls = {},
-      jdtls = {},
-      omnisharp = {
-        cmd = {
-          "dotnet",
-          "/home/alexander/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll"
-        }
-      },
-      gopls = {}
+      ts_ls = {}
     }
   },
   config = function(_, opts)
