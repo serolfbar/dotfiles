@@ -6,6 +6,7 @@ return {
  -- example using `opts` for defining servers
  opts = {
    servers = {
+     pyright = {},
      lua_ls = {},
      gopls = {},
      rust_analyzer = {},
