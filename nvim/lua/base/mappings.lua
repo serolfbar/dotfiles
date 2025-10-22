@@ -24,7 +24,6 @@ vim.keymap.set('n', '<leader>fa', function() vim.lsp.buf.code_action() end, {
 })
 
 
-
 ---------------------------------------------- NEO TREE ----------------------------------------------------
 vim.keymap.set("n", "<Leader>t", ":Neotree toggle<CR>")
 
