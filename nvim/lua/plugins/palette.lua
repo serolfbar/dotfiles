@@ -1,0 +1,3 @@
+return {
+	 'bhugovilela/palette.nvim'
+}
