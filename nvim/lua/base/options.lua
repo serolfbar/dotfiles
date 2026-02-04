@@ -5,8 +5,8 @@ vim.opt.cursorline = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.cmd("set nomodeline")
+vim.cmd("colorscheme moonfly")
 -- DISABLING THIS FOR LSP_LINES to work
-vim.cmd.colorscheme("kanso-mist")
 -- require("mini.hues").setup({
 -- 	accent = "bg",
 -- 	background = "#17280e",
